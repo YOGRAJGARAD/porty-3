@@ -49,11 +49,18 @@ export function ProjectsSection() {
                 <div className="absolute inset-0 border-2 border-primary/20 rounded-[2rem] animate-pulse pointer-events-none" />
               )}
               
-              <div className={`w-full bg-muted/20 relative overflow-hidden ${project.isFeatured ? 'h-72 md:h-96' : 'h-64'}`}>
+              <div
+                className={`w-full relative overflow-hidden ${project.isFeatured ? 'h-72 md:h-96' : 'h-64'}`}
+                style={{ background: project.bannerBg ?? undefined }}
+              >
                 <img
                   src={project.banner}
                   alt={project.title}
-                  className="absolute inset-0 w-full h-full object-cover"
+                  className={`absolute inset-0 w-full h-full ${
+                    project.bannerFit === 'contain'
+                      ? 'object-contain p-8'
+                      : 'object-cover'
+                  }`}
                 />
                 
                 {project.isFeatured && (

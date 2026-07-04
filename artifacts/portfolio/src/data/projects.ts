@@ -14,6 +14,10 @@ export interface Project {
   category: string;
   technologies: string[];
   banner: string;
+  /** 'cover' (default) fills the banner area; 'contain' shows the full image with padding */
+  bannerFit?: 'cover' | 'contain';
+  /** CSS background-color for the banner wrapper when bannerFit is 'contain' */
+  bannerBg?: string;
   problemStatement: string;
   features: string[];
   results?: string[];
@@ -110,6 +114,8 @@ export const projectsData: Project[] = [
     category: "SQL • Data Analysis",
     technologies: ["SQL", "PostgreSQL", "Analytics"],
     banner: "assets/netflix-logo.png",
+    bannerFit: "contain",
+    bannerBg: "#141414",
     problemStatement: "Streaming platforms accumulate vast content libraries with no clear picture of content distribution, rating patterns, or regional gaps — making strategic decisions hard to justify with data.",
     goal: "Perform a comprehensive SQL-driven analysis of Netflix's movie and TV show catalogue to answer 15 structured business questions and extract actionable content insights.",
     architectureFlow: [
