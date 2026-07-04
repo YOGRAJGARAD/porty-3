@@ -1,0 +1,24 @@
+Please add my Final Year Project details into the "Featured Projects" or "Projects" section of my portfolio. Use a premium UI theme with a Warm Cream background (#FDFBF7), Soft Violet primary components (#7256AB), and Brand Orange accents (#FF6B35).
+
+Structure the project component in React using this structured content:
+
+1. Project Title: LEARNING CAUSAL SEMANTIC REPRESENTATIONS FOR ROBUST OOD PREDICTION (Final Year Project | 2025-2026)
+2. Subtitle: An Empirical Investigation on Correlated MNIST Data
+3. Tech Stack Badges: Python, PyTorch, TensorFlow, Causal Inference, Generative Models, Latent Factor Analysis, MNIST.
+
+4. Problem Statement & Goal:
+   - Problem: Deep learning models often fail catastrophically on Out-of-Distribution (OOD) testing environments because they exploit superficial, spurious correlations within the training data instead of discovering invariant causal structural mechanisms.
+   - Goal: To design a comprehensive Causal Semantic Generative (CSG) framework capable of disentangling invariant semantic factors from volatile structural variants, ensuring accurate and stable cross-domain generalizability.
+
+5. Core Methodology & Architecture Flow (Represent as a clean visual step-by-step UI flow):
+   - Prior Distribution: Captures training environment correlations and domain dynamics.
+   - Decoder Network: Generates complex structural observations from distinct latent factors.
+   - Causal Predictor: Predicts labels strictly using invariant, robust semantic features.
+   - OOD Deployment: Evaluates stability against severe, unseen environment shifts.
+
+6. Key Performance Metrics & Advantages:
+   - Standard ERM Classifier: 11.2% Accuracy on OOD (Catastrophic Failure)
+   - CSG Model (Our Approach): 89.3% Accuracy on OOD (Highly Robust)
+   - Core Advantages: Disentangled Latent Space, Eliminates Spurious Correlation, Strict Invariant Prediction Loop.
+
+Please make sure it uses a premium card layout with glassmorphism touches, custom responsive tech stack pills, and subtle hover animations that match our custom antigravity cursor!

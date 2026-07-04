@@ -1,6 +1,6 @@
-# [Project name]
+# Yograj Garad — AI & Data Science Portfolio
 
-_Replace the heading above with the project's name, and this line with one sentence describing what this app does for users._
+A premium single-page portfolio showcasing Yograj Garad's AI/Data Science projects, skills, education, and experience — built with React + Vite, Tailwind CSS, and Framer Motion.
 
 ## Run & Operate
 
@@ -22,15 +22,22 @@ _Replace the heading above with the project's name, and this line with one sente
 
 ## Where things live
 
-_Populate as you build — short repo map plus pointers to the source-of-truth file for DB schema, API contracts, theme files, etc._
+- `artifacts/portfolio/src/` — all frontend code
+- `artifacts/portfolio/src/index.css` — theme palette (HSL vars: cream bg, violet primary, orange accent)
+- `artifacts/portfolio/src/data/projects.ts` — all project data including FYP
+- `artifacts/portfolio/src/components/AntigravityCursor.tsx` — custom cursor physics
+- `artifacts/portfolio/public/assets/` — project banner images
 
 ## Architecture decisions
 
-_Populate as you build — non-obvious choices a reader couldn't infer from the code (3-5 bullets)._
+- Fully static frontend — no API calls. All project data lives in `src/data/projects.ts`.
+- Antigravity cursor implemented with `requestAnimationFrame` + lerp (factor 0.08) — NOT framer-motion spring — to avoid jitter on the ring. `useRef<number | null>(null)` required for React 19 TS types.
+- Project images served from `artifacts/portfolio/public/assets/` (Vite serves `public/` at root).
+- Wouter router uses `import.meta.env.BASE_URL` as base path for the Replit proxy.
 
 ## Product
 
-_Describe the high-level user-facing capabilities of this app once they exist._
+Single-page portfolio at `/`. Sections: Hero (typewriter roles + metrics), About, Skills (categorized pills), Education (timeline), Projects (glassmorphism grid + full-screen modal), Experience (timeline), Contact. Features the Final Year Project "Learning Causal Semantic Representations for Robust OOD Prediction" as a featured card. Antigravity cursor: orange dot (precise) + violet ring (spring-lerp physics via rAF). Light/dark mode toggle stored in localStorage.
 
 ## User preferences
 

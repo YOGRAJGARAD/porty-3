@@ -1,0 +1,37 @@
+Please refactor my portfolio website layout to match the premium, structured dashboard aesthetic shown in "image(60)_2.jpg", replacing the text-heavy layout from "image_769e5a.png". Use a clean Warm Cream background (#FCF7F0), Soft Violet (#6366F1), and Brand Orange (#FF7A00) accents.
+
+Please build or update the full React page layout with the following exact structures:
+
+1. PREMIUM FLOATING NAVBAR:
+   - Left: Rounded pill logo container with "YG Yograj Garad".
+   - Center: Nav links (Home, About, Skills, Projects, Dashboards, Education, Certifications, Contact) with a soft violet active indicator dot.
+   - Right: "Download Resume" button with a dark premium finish next to a minimal theme-toggle icon.
+
+2. HERO SECTION & STATS GRID:
+   - Top Pill: Subtle badge "• AI & Data Science Graduate"
+   - Main Heading: "Hi, I'm Yograj Garad" (with "Yograj Garad" highlighted in a violet-to-orange premium gradient).
+   - Subtitles: Clean typography detailing your roles (Data Analyst | Business Intelligence Enthusiast | Python & SQL Developer).
+   - Primary Buttons: Smooth pill buttons for "Explore My Work →" (Dark) and "Contact Me ✉" (Bordered/Light).
+   - Stats Row: 4 horizontally aligned minimal glassmorphic cards:
+     * "6+ Projects Completed"
+     * "5+ Dashboards Built"
+     * "3+ Databases Worked"
+     * "2+ Certifications"
+
+3. FEATURED PROJECTS SECTION (Incorporate Final Year Project Here):
+   - Header: "FEATURED PROJECTS / Data Projects •" with a "View All Projects →" link on the right.
+   - Project Grid Layout: Create clean white cards with generous padding, subtle drop shadows, custom tech-stack pills, and an external link icon.
+   - Card Content (Final Year Project):
+     * Title: LEARNING CAUSAL SEMANTIC REPRESENTATIONS FOR ROBUST OOD PREDICTION (Final Year Project | 2025-2026)
+     * Subtitle: An Empirical Investigation on Correlated MNIST Data
+     * Tech Badges: Python, PyTorch, TensorFlow, Causal Inference, Generative Models, Latent Factor Analysis
+     * Problem & Goal: Disentangling invariant semantic factors from volatile structural variants to stop deep learning models from failing under severe Out-of-Distribution (OOD) testing environments.
+     * Core Methodology Flow: 4 step-by-step minimal inline UI sub-cards (Prior Distribution → Decoder Network → Causal Predictor → OOD Deployment).
+     * Performance Metrics Tag: Highlight the comparison metrics (Standard ERM: 11.2% Accuracy vs. CSG Model Our Approach: 89.3% Accuracy on OOD).
+
+4. POWER BI DASHBOARDS & GRID SECTION:
+   - Header: "POWER BI DASHBOARDS / Interactive Dashboards •" with a "View All Dashboards →" link.
+   - Two-column dashboard display showcasing visual layout previews (simulating Amazon Sales Analysis and Fitness Analytics dashboards) with metadata and tech badges (Power BI, SQL, DAX, Excel).
+
+5. INTERACTION ENGINE:
+   - Ensure the entire page utilizes the custom 'Antigravity' cursor effect: a precise Brand Orange (#FF7A00) pointer dot with a lagging Soft Violet (#6366F1) outer fluid ring trailing behind on mouse move. Add smooth float-up on scroll and lift hover effects to all cards.
