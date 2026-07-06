@@ -51,11 +51,11 @@ export function HeroSection() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-primary/20 bg-primary/5 text-primary text-sm font-medium"
+          className="inline-flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-1.5 rounded-full border border-primary/20 bg-primary/5 text-primary text-[11px] sm:text-sm font-medium max-w-full whitespace-nowrap"
         >
-          <span className="w-2 h-2 rounded-full bg-accent animate-pulse" />
-          AI & DATA SCIENCE GRADUATE
-          <span className="text-primary/40">›</span>
+          <span className="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-accent animate-pulse shrink-0" />
+          AI &amp; DATA SCIENCE GRADUATE
+          <span className="text-primary/40 shrink-0">›</span>
         </motion.div>
 
         {/* Main Heading */}

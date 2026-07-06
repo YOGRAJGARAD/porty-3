@@ -64,20 +64,21 @@ export function Navbar() {
 
   return (
     <>
-      <header className={`fixed top-0 left-0 right-0 z-50 flex justify-center transition-all duration-300 ${isScrolled ? 'pt-3' : 'pt-5'} px-4`}>
-        <div className="glass-panel rounded-full px-5 py-2.5 flex items-center justify-between w-full max-w-6xl gap-4">
-          {/* Logo */}
+      <header className={`fixed top-0 left-0 right-0 z-50 flex justify-center transition-all duration-300 ${isScrolled ? 'pt-3' : 'pt-5'} px-3 sm:px-4`}>
+        <div className="glass-panel rounded-full px-3 sm:px-5 py-2.5 flex items-center justify-between w-full max-w-6xl gap-2 sm:gap-4">
+          {/* Logo — shrink-0 guarantees it is never pushed off-screen */}
           <button
-            className="flex items-center gap-2.5 shrink-0 cursor-none"
+            className="flex items-center gap-2 shrink-0 cursor-none min-w-0"
             onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
           >
-            <div className="w-8 h-8 rounded-lg bg-primary flex items-center justify-center text-white text-sm font-bold">
+            <div className="w-8 h-8 rounded-lg bg-primary flex items-center justify-center text-white text-sm font-bold shrink-0">
               YG
             </div>
-            <span className="text-sm font-semibold text-foreground hidden sm:block">Yograj Garad</span>
+            {/* Name: always visible at sm+; below sm it hides to preserve space for the YG pill */}
+            <span className="text-sm font-semibold text-foreground hidden sm:block truncate">Yograj Garad</span>
           </button>
 
-          {/* Desktop Nav */}
+          {/* Desktop Nav — visible at lg+ (unchanged) */}
           <nav className="hidden lg:flex items-center gap-1">
             {navLinks.map((link) => (
               <button
@@ -97,12 +98,13 @@ export function Navbar() {
           </nav>
 
           {/* Actions */}
-          <div className="flex items-center gap-2 shrink-0">
+          <div className="flex items-center gap-1.5 sm:gap-2 shrink-0">
+            {/* Download Resume: visible at lg+ only (hamburger menu has it on mobile/tablet) */}
             <a
               href="https://drive.google.com/file/d/1mJUBXC90AOWmewtOpKlvTLtUn7uDooZI/view?usp=drive_link"
               target="_blank"
               rel="noopener noreferrer"
-              className="hidden sm:flex items-center gap-1.5 px-4 py-2 rounded-full bg-foreground text-background text-sm font-semibold hover:opacity-80 transition-opacity"
+              className="hidden lg:flex items-center gap-1.5 px-4 py-2 rounded-full bg-foreground text-background text-sm font-semibold hover:opacity-80 transition-opacity"
             >
               <Download className="w-3.5 h-3.5" />
               Download Resume
@@ -114,8 +116,10 @@ export function Navbar() {
             >
               {isDark ? <Moon className="w-4 h-4" /> : <Sun className="w-4 h-4" />}
             </button>
+            {/* Hamburger — visible below lg (768px tablet + all mobile) */}
             <button
               className="lg:hidden p-2 rounded-full hover:bg-black/5 dark:hover:bg-white/10 text-foreground"
+              aria-label={isMobileOpen ? 'Close menu' : 'Open menu'}
               onClick={() => setIsMobileOpen(!isMobileOpen)}
             >
               {isMobileOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
