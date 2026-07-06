@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useCallback, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, ArrowRight, Github, Sparkles, Database } from 'lucide-react';
 import { projectsData, Project } from '../data/projects';
@@ -6,17 +6,27 @@ import { projectsData, Project } from '../data/projects';
 export function ProjectsSection() {
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
 
-  // Stop body scrolling when modal is open
-  React.useEffect(() => {
-    if (selectedProject) {
-      document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = 'auto';
-    }
+  const closeModal = useCallback(() => setSelectedProject(null), []);
+
+  // Lock body scroll while modal is open; restore on close/unmount
+  useEffect(() => {
+    if (!selectedProject) return;
+    const prev = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
     return () => {
-      document.body.style.overflow = 'auto';
+      document.body.style.overflow = prev || 'auto';
     };
   }, [selectedProject]);
+
+  // Escape key closes the modal; listener removed when modal closes
+  useEffect(() => {
+    if (!selectedProject) return;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') closeModal();
+    };
+    window.addEventListener('keydown', onKey);
+    return () => window.removeEventListener('keydown', onKey);
+  }, [selectedProject, closeModal]);
 
   return (
     <section id="projects" className="py-24 px-6 relative">
@@ -110,13 +120,13 @@ export function ProjectsSection() {
       {/* Modal */}
       <AnimatePresence>
         {selectedProject && (
-          <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 sm:p-6">
+          <div key={selectedProject.id} className="fixed inset-0 z-[100] flex items-center justify-center p-4 sm:p-6">
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               className="absolute inset-0 bg-background/80 backdrop-blur-md"
-              onClick={() => setSelectedProject(null)}
+              onClick={closeModal}
             />
             
             <motion.div
@@ -129,16 +139,12 @@ export function ProjectsSection() {
             >
               {/* Header with image */}
               <div className="relative h-64 sm:h-80 bg-muted shrink-0">
-                <button 
-                  onClick={() => setSelectedProject(null)}
-                  className="absolute top-4 right-4 z-20 p-2 bg-black/20 hover:bg-black/40 text-white rounded-full backdrop-blur-md transition-colors"
-                >
-                  <X className="w-6 h-6" />
-                </button>
-                <div className="absolute inset-0 bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] dark:bg-[radial-gradient(#1f2937_1px,transparent_1px)] [background-size:16px_16px] opacity-20" />
-                <div className="absolute inset-0 bg-gradient-to-t from-card to-transparent z-10" />
-                
-                <div className="absolute bottom-0 left-0 right-0 p-8 sm:p-12 z-20">
+                {/* Decorative overlays — pointer-events-none so they never block the close button */}
+                <div className="absolute inset-0 bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] dark:bg-[radial-gradient(#1f2937_1px,transparent_1px)] [background-size:16px_16px] opacity-20 pointer-events-none" />
+                <div className="absolute inset-0 bg-gradient-to-t from-card to-transparent pointer-events-none" />
+
+                {/* Title block — pointer-events-none so it never blocks the close button */}
+                <div className="absolute bottom-0 left-0 right-0 p-8 sm:p-12 pointer-events-none">
                   <div className="flex items-center gap-3 mb-4">
                     <span className="px-3 py-1 bg-primary/20 text-primary font-medium rounded-full text-xs uppercase tracking-wider backdrop-blur-md">
                       {selectedProject.category}
@@ -150,6 +156,16 @@ export function ProjectsSection() {
                   <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4">{selectedProject.title}</h2>
                   <p className="text-xl text-muted-foreground max-w-3xl">{selectedProject.subtitle}</p>
                 </div>
+
+                {/* Close button — rendered last so it is always on top in DOM stacking order */}
+                <button
+                  type="button"
+                  aria-label="Close modal"
+                  onClick={closeModal}
+                  className="absolute top-4 right-4 p-2 bg-black/20 hover:bg-black/40 text-white rounded-full backdrop-blur-md transition-colors"
+                >
+                  <X className="w-6 h-6" />
+                </button>
               </div>
 
               {/* Scrollable Content */}
