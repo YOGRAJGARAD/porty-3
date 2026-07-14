@@ -1,4 +1,5 @@
 import React from 'react';
+import { Analytics } from '@vercel/analytics/react';
 import { Route, Switch, Router as WouterRouter } from 'wouter';
 import { Navbar } from './components/Navbar';
 import { HeroSection } from './components/HeroSection';
@@ -58,6 +59,7 @@ function App() {
         <Route path="/" component={PortfolioPage} />
         <Route component={NotFound} />
       </Switch>
+      <Analytics />
     </WouterRouter>
   );
 }
