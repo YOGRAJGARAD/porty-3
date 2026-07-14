@@ -3,20 +3,20 @@ import { motion } from 'framer-motion';
 
 const skillsData = [
   {
-    category: "AI & Machine Learning",
-    skills: ["Python", "PyTorch", "TensorFlow", "Scikit-learn", "Causal Inference", "Generative Models", "LangChain", "OpenCV"]
+    category: "Programming & Data",
+    skills: ["Python", "SQL", "PostgreSQL"]
   },
   {
-    category: "Data Engineering",
-    skills: ["SQL", "PostgreSQL", "ETL Pipelines", "Apache Spark", "Data Warehousing", "dbt"]
+    category: "Data Analysis",
+    skills: ["Pandas", "NumPy", "Matplotlib", "Seaborn"]
   },
   {
-    category: "Visualization & BI",
-    skills: ["Power BI", "Tableau", "Recharts", "D3.js", "Excel Advanced"]
+    category: "Machine Learning",
+    skills: ["PyTorch", "TensorFlow", "FastAPI"]
   },
   {
-    category: "Languages & Tools",
-    skills: ["Python", "JavaScript", "TypeScript", "Git", "Docker", "VS Code", "Jupyter"]
+    category: "Tools & Visualization",
+    skills: ["Power BI", "Excel", "Git", "GitHub", "Jupyter Notebook"]
   }
 ];
 
